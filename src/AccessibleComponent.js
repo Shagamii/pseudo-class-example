@@ -107,7 +107,8 @@ class AccessibleComponent extends Component {
     const pseudo = {
       focus,
       hover,
-      active
+      active,
+      disabled
     };
 
     const renderData = {
@@ -116,7 +117,7 @@ class AccessibleComponent extends Component {
       onMouseLeave: this.onMouseLeave,
       pseudo
     };
-    return (
+   return (
       <Touchable
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
@@ -128,5 +129,6 @@ class AccessibleComponent extends Component {
     );
   }
 }
+
 
 export default AccessibleComponent;

@@ -1,16 +1,15 @@
 import React from 'react';
-import { AccessibleComponent, Button } from "pseudo-class-example"
-import { StyleSheet, View } from "react-primitives"
+import { StyleSheet, Text, View } from 'react-native';
+import { Button } from "pseudo-class-example"
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <AccessibleComponent
-          render={(data) => (
-            <Button {...data}>ボタン</Button>
-          )}
-        />
+        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Changes you make will automatically reload.</Text>
+        <Text>Shake your phone to open the developer menu.</Text>
+        <Button>Button</Button>
       </View>
     );
   }
