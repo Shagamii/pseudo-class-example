@@ -5449,6 +5449,7 @@ prr@~1.0.1:
   dependencies:
     react "16.3.2"
     react-dom "16.3.3"
+    react-native-web "^0.8.10"
     react-primitives "^0.6.1"
 
 pseudomap@^1.0.2:
@@ -5608,7 +5609,7 @@ react-error-overlay@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
 
-react-native-web@^0.8.3:
+react-native-web@^0.8.10, react-native-web@^0.8.3:
   version "0.8.10"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.8.10.tgz#2a913656a006230848eb432248de7fb8ce488c6d"
   dependencies:

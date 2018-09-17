@@ -1,7 +1,7 @@
 {
   "name": "pseudo-class-example",
   "version": "0.0.1",
-  "main": "src/index",
+  "main": "dist/index",
   "scripts": {
     "build": "rm -rf dist && babel -d dist src"
   },
@@ -15,17 +15,19 @@
   "dependencies": {
     "react": "16.3.2",
     "react-dom": "16.3.3",
+    "react-native": "^0.57.0",
     "react-native-web": "^0.8.10",
     "react-primitives": "^0.6.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.1",
-    "@babel/plugin-proposal-class-properties": "^7.0.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.0-beta",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-object-rest-spread": "^6.5.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.6.5",
+    "babel-preset-react-native": "^4.0.1",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0",
     "webpack-node-externals": "^1.7.2",
