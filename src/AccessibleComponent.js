@@ -5,8 +5,6 @@ class AccessibleComponent extends Component {
   constructor(props) {
     super(props);
 
-    this.inputRef = React.createRef();
-
     this.state = {
       focus: false,
       active: false,
@@ -15,7 +13,6 @@ class AccessibleComponent extends Component {
   }
 
   onPressIn = () => {
-    console.log("hoge")
     this.setState({
       focus: true,
       active: true
@@ -27,13 +24,10 @@ class AccessibleComponent extends Component {
     }
   };
 
-  onKeyPress = (e) => {
+  onKeyDown = (e) => {
     const { key } = e;
     if (key === "Tab") {
       this.setState({ focus: false });
-      // if (this.inputRef.current) {
-      //   this.inputRef.current.blur();
-      // }
     }
 
     const { onPress } = this.props;
@@ -77,17 +71,16 @@ class AccessibleComponent extends Component {
     const { accessibilityRole, inputProps, children } = this.props;
     return (
       <React.Fragment>
-        {accessibilityRole != null && (
+        {!accessibilityRole && (
           <Text
             accessibilityRole={accessibilityRole}
-            ref={this.inputRef}
             style={{
               width: 0,
               height: 0,
               position: "absolute"
             }}
             onFocus={this.onFocus}
-            onKeyPress={this.onKeyPress}
+            onKeyDown={this.onKeyDown}
             onBlur={this.onBlur}
             {...inputProps}
           />
@@ -115,11 +108,13 @@ class AccessibleComponent extends Component {
       children: this.renderPropsChildren(),
       onMouseEnter: this.onMouseEnter,
       onMouseLeave: this.onMouseLeave,
+      onFocus: this.onFocus,
+      onKeyDown: this.onKeyDown,
+      onBlur: this.onBlur,
       pseudo
     };
    return (
       <Touchable
-        onPress={() => console.log("hoge")}
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
         disabled={disabled}
