@@ -119,6 +119,7 @@ class AccessibleComponent extends Component {
     };
    return (
       <Touchable
+        onPress={() => console.log("hoge")}
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
         disabled={disabled}

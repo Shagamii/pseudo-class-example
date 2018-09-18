@@ -14,6 +14,7 @@ class ButtonPresenter extends React.Component {
       style,
       ...rest
     } = this.props
+    console.log(rest)
     return (
       <Text>
         <View
