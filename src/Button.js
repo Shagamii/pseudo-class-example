@@ -6,54 +6,52 @@ import {
 } from "react-primitives";
 import AccessibleComponent from "./AccessibleComponent"
 
-class ButtonPresenter extends React.Component {
-  render() {
-    const {
-      children,
-      pseudo: { hover, active, focue, disabled } = {},
-      style,
-      ...rest
-    } = this.props
-    return (
-      <Text>
-        <View
-            accessibilityRole="button"
-            style={[
-              styles.button,
-              hover && styles.hoverButton,
-              active && styles.activeButton,
-              style
-            ]}
-            {...rest}
-        >
-          <Text
-            style={[
-              hover && styles.hoverText,
-            ]}
-          >
-            { children }
-          </Text>
-        </View>
+const ButtonPresenter = ({
+  children,
+  pseudo: { hover, active, focus, disabled } = {},
+  accessibilityRole,
+  style,
+  ...rest
+}) => (
+  <Text>
+    <View
+        style={[
+          styles.button,
+          hover && styles.hoverButton,
+          focus && styles.focusButton,
+          focus && {
+            outline: "none"
+          },
+          active && styles.activeButton,
+          style
+        ]}
+        accessibilityRole={accessibilityRole}
+        {...rest}
+    >
+      <Text
+        style={[
+          (hover || focus) && styles.hoverText,
+        ]}
+      >
+        { children }
       </Text>
-    )
-  }
-}
+    </View>
+  </Text>
+)
 
 const Button = ({
   disabled,
   ...rest
-}) => {
-  return (
-    <AccessibleComponent
-      render={(data) => (
-        <ButtonPresenter {...data} />
-      )}
-      accessibilityRole="button"
-      disabled={disabled}
-      {...rest}
-    />
-  );
-};
+}) => (
+  <AccessibleComponent
+    render={(data) => (
+      <ButtonPresenter {...data} />
+    )}
+    accessibilityRole="button"
+    disabled={disabled}
+    {...rest}
+  />
+);
 
 const styles = StyleSheet.create({
   button: {
@@ -72,6 +70,9 @@ const styles = StyleSheet.create({
   },
   activeButton: {
     backgroundColor: "gray"
+  },
+  focusButton: {
+    backgroundColor: "red"
   }
 })
 

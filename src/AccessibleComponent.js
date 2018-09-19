@@ -14,8 +14,7 @@ class AccessibleComponent extends Component {
 
   onPressIn = () => {
     this.setState({
-      focus: true,
-      active: true
+      active: true,
     });
 
     const { onPressIn } = this.props;
@@ -57,7 +56,7 @@ class AccessibleComponent extends Component {
     }
 
     this.setState({
-      active: false
+      active: false,
     });
   };
 
@@ -73,7 +72,7 @@ class AccessibleComponent extends Component {
       <React.Fragment>
         {!accessibilityRole && (
           <Text
-            accessibilityRole={accessibilityRole}
+            accessibilityRole="button"
             style={{
               width: 0,
               height: 0,
@@ -94,6 +93,7 @@ class AccessibleComponent extends Component {
     const {
       disabled,
       render,
+      accessibilityRole,
       ...rest
     } = this.props;
     const { focus, hover, active } = this.state;
@@ -111,12 +111,14 @@ class AccessibleComponent extends Component {
       onFocus: this.onFocus,
       onKeyDown: this.onKeyDown,
       onBlur: this.onBlur,
+      accessibilityRole,
       pseudo
     };
    return (
       <Touchable
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
+        onPress={this.onPress}
         disabled={disabled}
         {...rest}
       >

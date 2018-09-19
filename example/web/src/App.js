@@ -17,6 +17,11 @@ class App extends Component {
         <div>
           <Button>Button</Button>
         </div>
+        <p>
+          hover: black,
+          active: <span style={{ color: "gray" }} >gray</span>,
+          focus: <span style={{ color: "red" }} >red</span>
+          </p>
       </div>
     );
   }
