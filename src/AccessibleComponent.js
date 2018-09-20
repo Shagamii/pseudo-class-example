@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { Touchable, Text } from "react-primitives";
 
+const triggerableAccessibilityRole = [
+  "link",
+  "button"
+]
+
 class AccessibleComponent extends Component {
 
   state = {
@@ -87,7 +92,8 @@ class AccessibleComponent extends Component {
     const { accessibilityRole, inputProps, children } = this.props;
     return (
       <React.Fragment>
-        {!accessibilityRole && (
+        {
+          (!accessibilityRole || !triggerableAccessibilityRole.includes(accessibilityRole)) && (
           <Text
             accessibilityRole="button"
             style={{
