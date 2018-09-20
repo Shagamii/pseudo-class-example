@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { Touchable, Text } from "react-primitives";
 
 class AccessibleComponent extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      focus: false,
-      active: false,
-      hover: false
-    };
+  state = {
+    focus: false,
+    active: false,
+    hover: false
   }
 
   onPressIn = () => {
@@ -24,14 +21,14 @@ class AccessibleComponent extends Component {
   };
 
   onKeyDown = (e) => {
-    const { key } = e;
-    if (key === "Tab") {
-      this.setState({ focus: false });
-    }
-
-    const { onPress } = this.props;
+    const { key } = e
+    const { onPress, onKeyDown } = this.props;
     if (key === "Enter" && onPress) {
       onPress();
+    }
+
+    if (onKeyDown) {
+      onKeyDown();
     }
   };
 
@@ -39,31 +36,51 @@ class AccessibleComponent extends Component {
     this.setState({
       hover: false
     });
+
+    const { onMouseLeave } = this.props;
+    if (onMouseLeave) {
+      onMouseLeave();
+    }
   };
 
   onFocus = () => {
     this.setState({ focus: true });
+
+    const { onFocus } = this.props;
+    if (onFocus) {
+      onFocus();
+    }
   };
 
   onBlur = () => {
     this.setState({ focus: false });
+
+    const { onBlur } = this.props;
+    if (onBlur) {
+      onBlur();
+    }
   };
 
   onPressOut = () => {
+    this.setState({
+      active: false,
+    });
+
     const { onPressOut } = this.props;
     if (onPressOut) {
       onPressOut();
     }
-
-    this.setState({
-      active: false,
-    });
   };
 
   onMouseEnter = () => {
     this.setState({
       hover: true
     });
+
+    const { onMouseEnter } = this.props;
+    if (onMouseEnter) {
+      onMouseEnter();
+    }
   };
 
   renderPropsChildren = () => {
@@ -118,7 +135,6 @@ class AccessibleComponent extends Component {
       <Touchable
         onPressIn={this.onPressIn}
         onPressOut={this.onPressOut}
-        onPress={this.onPress}
         disabled={disabled}
         {...rest}
       >
